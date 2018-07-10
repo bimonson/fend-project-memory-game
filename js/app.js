@@ -43,10 +43,18 @@ deck.addEventListener('click', event => {
   const clickTarget = event.target;
   if (clickTarget.classList.contains('card')) {
     flipCard(clickTarget);
+    addFlippedCard(clickTarget);
   }
 });
 
 function flipCard(clickTarget) {
   clickTarget.classList.toggle('open');
   clickTarget.classList.toggle('show');
+}
+
+let flippedCards = [];
+
+function addFlippedCard(clickTarget) {
+  flippedCards.push(clickTarget);
+  console.log(flippedCards);
 }
