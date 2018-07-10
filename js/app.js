@@ -40,8 +40,13 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
-  if (event.target.classList.contains('card')) {
-    event.target.classList.toggle('open');
-    event.target.classList.toggle('show');
+  const clickTarget = event.target;
+  if (clickTarget.classList.contains('card')) {
+    flipCard(clickTarget);
   }
 });
+
+function flipCard(clickTarget) {
+  clickTarget.classList.toggle('open');
+  clickTarget.classList.toggle('show');
+}
