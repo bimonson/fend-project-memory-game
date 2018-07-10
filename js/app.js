@@ -41,6 +41,7 @@ const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
   if (event.target.classList.contains('card')) {
-    console.log("You clicked a card!");
+    event.target.classList.toggle('open');
+    event.target.classList.toggle('show');
   }
 });
