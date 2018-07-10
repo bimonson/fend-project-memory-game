@@ -41,9 +41,12 @@ const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
   const clickTarget = event.target;
-  if (clickTarget.classList.contains('card')) {
+  if (clickTarget.classList.contains('card') && flippedCards.length < 2) {
     flipCard(clickTarget);
     addFlippedCard(clickTarget);
+    if (flippedCards.length === 2) {
+      console.log('2 cards!')
+    }
   }
 });
 
