@@ -45,7 +45,7 @@ deck.addEventListener('click', event => {
     flipCard(clickTarget);
     addFlippedCard(clickTarget);
     if (flippedCards.length === 2) {
-      console.log('2 cards!')
+      checkMatch();
     }
   }
 });
@@ -60,4 +60,12 @@ let flippedCards = [];
 function addFlippedCard(clickTarget) {
   flippedCards.push(clickTarget);
   console.log(flippedCards);
+}
+
+function checkMatch() {
+  if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
+    console.log('Match!');
+  } else {
+    console.log('No match sucker!');
+  }
 }
