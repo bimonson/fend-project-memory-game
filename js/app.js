@@ -41,7 +41,7 @@ const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
   const card = event.target;
-  if (card.classList.contains('card') && flippedCards.length < 2) {
+  if (clickIsValid(card)) {
     flipCard(card);
     addFlippedCard(card);
     if (flippedCards.length === 2) {
@@ -49,6 +49,15 @@ deck.addEventListener('click', event => {
     }
   }
 });
+
+function clickIsValid(card) {
+  return (
+    card.classList.contains('card') &&
+    !card.classList.contains('match') &&
+    flippedCards.length < 2 &&
+    !flippedCards.includes(card)
+  )
+}
 
 function flipCard(card) {
   card.classList.toggle('open');
