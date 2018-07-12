@@ -40,32 +40,38 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
-  const clickTarget = event.target;
-  if (clickTarget.classList.contains('card') && flippedCards.length < 2) {
-    flipCard(clickTarget);
-    addFlippedCard(clickTarget);
+  const card = event.target;
+  if (card.classList.contains('card') && flippedCards.length < 2) {
+    flipCard(card);
+    addFlippedCard(card);
     if (flippedCards.length === 2) {
       checkMatch();
     }
   }
 });
 
-function flipCard(clickTarget) {
-  clickTarget.classList.toggle('open');
-  clickTarget.classList.toggle('show');
+function flipCard(card) {
+  card.classList.toggle('open');
+  card.classList.toggle('show');
 }
 
 let flippedCards = [];
 
-function addFlippedCard(clickTarget) {
-  flippedCards.push(clickTarget);
+function addFlippedCard(card) {
+  flippedCards.push(card);
   console.log(flippedCards);
 }
 
 function checkMatch() {
   if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
-    console.log('Match!');
+    flippedCards[0].classList.toggle('match');
+    flippedCards[1].classList.toggle('match');
+    flippedCards = [];
   } else {
-    console.log('No match sucker!');
+    setTimeout(() => {
+      flipCard(flippedCards[0]);
+      flipCard(flippedCards[1]);
+      flippedCards = [];
+    }, 1000);
   }
 }
