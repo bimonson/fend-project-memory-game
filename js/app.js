@@ -37,6 +37,13 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+function shuffleDeck() {
+  cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+  const shuffledCards = shuffle(cardsToShuffle);
+  console.log(shuffledCards);
+}
+shuffleDeck();
+
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
