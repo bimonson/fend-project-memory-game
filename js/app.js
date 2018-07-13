@@ -53,7 +53,15 @@ function startTimer() {
   timerId = setInterval(() => {
     time++;
     displayTime();
+    checkTime();
   }, 1000);
+}
+
+// Removes one star after 1 minute and another after 2 minutes
+function checkTime() {
+  if (time === 60 || time === 120) {
+    hideStar();
+  }
 }
 
 function stopTimer() {
@@ -77,9 +85,7 @@ function displayTime() {
 function addMove() {
   moves++;
   const movesText = document.querySelector('.moves');
-  if (moves < 10) {
-    movesText.innerHTML = moves;
-  }
+  movesText.innerHTML = moves;
 }
 
 // Removes one star at 16 moves and another at 24 moves
