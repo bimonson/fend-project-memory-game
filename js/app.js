@@ -39,20 +39,25 @@ function shuffle(array) {
 
 const deck = document.querySelector('.deck');
 
+let flippedCards = [];
+
 let moves = 0;
 
+// Counts the number of moves per round of play (two cards flipped)
 function addMove() {
   moves++;
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = moves;
 }
 
+// Removes one star at 16 moves and another at 24 moves
 function checkMoves() {
   if (moves === 16 || moves === 24) {
     hideStar();
   }
 }
 
+// Changes the visibility of the star to hidden
 function hideStar() {
   const stars = document.querySelectorAll('.stars li');
   for (star of stars) {
@@ -63,6 +68,7 @@ function hideStar() {
   }
 }
 
+// Calls the shuffle function and appends the shuffled cards to the deck
 function shuffleDeck() {
   const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
   const shuffledCards = shuffle(cardsToShuffle);
@@ -72,6 +78,7 @@ function shuffleDeck() {
 }
 shuffleDeck();
 
+// Adds eventListener to the deck and utilizes eventDelegation to listen to the cards and calls functions
 deck.addEventListener('click', event => {
   const card = event.target;
   if (clickIsValid(card)) {
@@ -85,6 +92,7 @@ deck.addEventListener('click', event => {
   }
 });
 
+// Defines a valid click
 function clickIsValid(card) {
   return (
     card.classList.contains('card') &&
@@ -94,18 +102,19 @@ function clickIsValid(card) {
   )
 }
 
+// Flips card by toggling .open and .show
 function flipCard(card) {
   card.classList.toggle('open');
   card.classList.toggle('show');
 }
 
-let flippedCards = [];
-
+// Adds flipped cards to the flippedCards array
 function addFlippedCard(card) {
   flippedCards.push(card);
   console.log(flippedCards);
 }
 
+// Checks cards for matches and clears the flippedCards array
 function checkMatch() {
   if (flippedCards[0].firstElementChild.className === flippedCards[1].firstElementChild.className) {
     flippedCards[0].classList.toggle('match');
