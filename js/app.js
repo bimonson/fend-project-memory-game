@@ -41,6 +41,8 @@ function shuffle(array) {
 
 const deck = document.querySelector('.deck');
 
+const stars = document.querySelectorAll('.stars li');
+
 let flippedCards = [];
 
 let moves = 0;
@@ -56,15 +58,7 @@ function startTimer() {
   timerId = setInterval(() => {
     time++;
     displayTime();
-    checkTime();
   }, 1000);
-}
-
-// Removes one star after 1 minute and another after 2 minutes
-function checkTime() {
-  if (time === 60 || time === 120) {
-    hideStar();
-  }
 }
 
 // Stops timer
@@ -102,7 +96,6 @@ function checkMoves() {
 
 // Changes the visibility of the star to hidden
 function hideStar() {
-  const stars = document.querySelectorAll('.stars li');
   for (star of stars) {
     if (star.style.visibility !== 'hidden') {
       star.style.visibility = 'hidden';
