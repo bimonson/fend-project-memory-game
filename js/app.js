@@ -47,6 +47,22 @@ function addMove() {
   movesText.innerHTML = moves;
 }
 
+function checkMoves() {
+  if (moves === 16 || moves === 24) {
+    hideStar();
+  }
+}
+
+function hideStar() {
+  const stars = document.querySelectorAll('.stars li');
+  for (star of stars) {
+    if (star.style.visibility !== 'hidden') {
+      star.style.visibility = 'hidden';
+      break;
+    }
+  }
+}
+
 function shuffleDeck() {
   const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
   const shuffledCards = shuffle(cardsToShuffle);
@@ -64,6 +80,7 @@ deck.addEventListener('click', event => {
     if (flippedCards.length === 2) {
       checkMatch();
       addMove();
+      checkMoves();
     }
   }
 });
