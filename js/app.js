@@ -43,11 +43,43 @@ let flippedCards = [];
 
 let moves = 0;
 
+let timerOff = true;
+
+let time = 0;
+
+let timerId;
+
+function startTimer() {
+  timerId = setInterval(() => {
+    time++;
+    displayTime();
+  }, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timerId);
+}
+
+function displayTime() {
+  const timer = document.querySelector('.timer');
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  if (seconds < 10 && minutes < 10) {
+    timer.innerHTML = `0${minutes}:0${seconds}`;
+  } else if (seconds >= 10 && minutes < 10) {
+    timer.innerHTML = `0${minutes}:${seconds}`;
+  } else {
+    timer.innerHTML = `${minutes}:${seconds}`;
+  }
+}
+
 // Counts the number of moves per round of play (two cards flipped)
 function addMove() {
   moves++;
   const movesText = document.querySelector('.moves');
-  movesText.innerHTML = moves;
+  if (moves < 10) {
+    movesText.innerHTML = moves;
+  }
 }
 
 // Removes one star at 16 moves and another at 24 moves
@@ -82,6 +114,10 @@ shuffleDeck();
 deck.addEventListener('click', event => {
   const card = event.target;
   if (clickIsValid(card)) {
+    if (timerOff) {
+      startTimer();
+      timerOff = false;
+    }
     flipCard(card);
     addFlippedCard(card);
     if (flippedCards.length === 2) {
