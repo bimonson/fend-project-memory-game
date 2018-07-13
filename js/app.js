@@ -37,6 +37,8 @@ function shuffle(array) {
  *    + if all cards have matched, visibility a message with the final score (put this functionality in another function that you call from this one)
  */
 
+// Global
+
 const deck = document.querySelector('.deck');
 
 let flippedCards = [];
@@ -49,6 +51,7 @@ let time = 0;
 
 let timerId;
 
+// Starts timer
 function startTimer() {
   timerId = setInterval(() => {
     time++;
@@ -64,10 +67,12 @@ function checkTime() {
   }
 }
 
+// Stops timer
 function stopTimer() {
   clearInterval(timerId);
 }
 
+//Displays time in minutes and seconds in HTML
 function displayTime() {
   const timer = document.querySelector('.timer');
   const minutes = Math.floor(time / 60);
