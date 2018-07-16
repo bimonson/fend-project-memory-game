@@ -112,3 +112,90 @@ h1 {
     float: left;
     width: 34px;
 }
+
+/*
+ * Styles for the Game Completion Modal
+ */
+
+.modal__bg {
+    position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    transition: background 0.5s ease;
+    background: linear-gradient(160deg, rgba(2,204,186,0.8) 0%, rgba(170,126,205,0.8) 100%);
+}
+
+.modal__container {
+    position: relative;
+    /* height: 70vh;
+    width: 50vw; */
+    justify-content: center;
+    margin: auto;
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.modal__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid  #02ccba;
+}
+
+.modal__title {
+    padding-right: 1rem;
+}
+
+.modal__close {
+    font-size: 1.5rem;
+}
+
+.modal__stats {
+    border-spacing: 0.5rem;
+    margin: 1rem auto;
+}
+
+.modal__stats th {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.modal__time th,
+.modal__stars th,
+.modal__moves th {
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.modal__time td,
+.modal__stars td,
+.modal__moves td {
+    text-align: left;
+    padding-left: 1rem;
+}
+
+.modal__button__replay {
+    margin: 1rem auto 1.5rem;
+    padding: 0.5rem 1rem;
+    display: flex;
+    font-size: 1.25rem;
+    font-family: 'Coda', cursive;
+    text-transform: uppercase;
+    color: white;
+    background: #02b3e4;
+    cursor: default;
+    border-style: none;
+}
+
+.modal__button__replay:hover {
+    background: #02ccba;
+}
+
+.modal__button__replay:active {
+    background: #2e3d49;
+}

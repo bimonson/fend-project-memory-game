@@ -4,11 +4,39 @@
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+
+    <!-- modal background -->
+    <div class="modal__bg">
+        <div class="modal__container">
+            <div class="modal__header">
+                <h1 class="modal__title">Congratulations!</h1>
+                <i class="modal__close far fa-window-close"></i>
+            </div>
+
+            <table class="modal__stats">
+                <thead>
+                    <tr><th colspan="2">Stats</th></tr>
+                </thead>
+                <tbody class="modal__time">
+                    <tr><th>Time</th><td>00:00</td></tr>
+                </tbody>
+                <tbody class="modal__stars">
+                        <tr><th>Stars</th><td>★★★</td></tr>
+                    </tbody>
+                    <tbody class="modal__moves">
+                            <tr><th>Moves</th><td>16</td></tr>
+                        </tbody>
+            </table>
+
+            <button class="modal__button__replay">Replay</button>
+        </div>
+    </div>
 
     <div class="container">
         <header>
@@ -16,7 +44,7 @@
         </header>
 
         <section class="score-panel">
-            <!-- new timer element -->
+            <!-- timer element -->
             <span class="timer">00:00</span>
 
         	<ul class="stars">
