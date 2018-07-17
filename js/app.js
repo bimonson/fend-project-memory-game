@@ -168,3 +168,36 @@ function checkMatch() {
     }, 1000);
   }
 }
+
+// Toggles Modal on and off
+function toggleModal() {
+  const modal = document.querySelector('.modal__bg');
+  modal.classList.toggle('hide');
+}
+
+
+// Modal tests
+time = 121;
+displayTime();
+moves = 18;
+checkMoves();
+addModalStats(); // Write stats to modal
+
+function addModalStats() {
+  const timeStat = document.querySelector('.modal__time tr td');
+  const timerClock = document.querySelector('.timer').innerHTML;
+  const movesStat = document.querySelector('.modal__moves tr td');
+  const starStat = document.querySelector('.modal__stars tr td');
+  const starList = document.querySelector('.stars')
+
+  starStat.innerHTML = starList.outerHTML;
+  timeStat.innerHTML = timerClock;
+  movesStat.innerHTML = moves;
+}
+
+document.querySelector('.modal__close').addEventListener('click', () => {
+  toggleModal();
+})
+
+
+

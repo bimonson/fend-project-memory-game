@@ -176,7 +176,14 @@ h1 {
 .modal__stars td,
 .modal__moves td {
     text-align: left;
+    font-size: 1.25rem;
     padding-left: 1rem;
+}
+
+.modal__stars td ul {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
 }
 
 .modal__button__replay {
@@ -198,4 +205,8 @@ h1 {
 
 .modal__button__replay:active {
     background: #2e3d49;
+}
+
+.hide {
+    display: none;
 }
