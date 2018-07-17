@@ -1,20 +1,24 @@
-# Memory Game Project
+# Memory Game
 
 ## Table of Contents
+* [Description](##description)
+* [Instructions](##instructions)
+* [Resources](##resources)
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Description
+
+A memory game where the user is presented with a 4x4 grid of randomly shuffled cards. Within this grid are 8 matching pairs. By clicking on a card the user reveals its symbol. When two matching cards are clicked their symbols remain visible. When there is no match the cards flip over so that their symbols are no longer visible. This process continues until all 8 matching pairs are found. Upon completion of the game a modal displays with the user's statistics including the length of time to completetion, the number of stars and the number of moves as well a replay button which resets the gameboard.
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* Click on a card to reveal its symbol
+* Continue matching cards until all 8 pairs are revealed
+* Correctly match cards in less moves and less time to improve your score
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Development
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+The memory game was built on the [starter code](https://github.com/udacity/fend-project-memory-game) provided by [Richard Kalehoff](https://github.com/richardkalehoff). I utilized JavaScript, HTML and CSS to style and build the functionality of this project.
 
-## Contributing
+## Resources
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+I found Matthew Cranford's [Memory Game Walkthrough](https://matthewcranford.com/category/blog-posts/walkthrough/memory-game/) to be an invaluable resource in developing this project. Many thanks to Matthew.
