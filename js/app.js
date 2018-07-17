@@ -52,6 +52,10 @@ let time = 0;
 
 let timerId;
 
+let matchedPairs = 0;
+
+const totalPairs = 8;
+
 // Starts timer
 function startTimer() {
   timerId = setInterval(() => {
@@ -96,8 +100,8 @@ function checkMoves() {
 // Changes the visibility of the star to hidden
 function hideStar() {
   for (star of stars) {
-    if (star.style.visibility !== 'hidden') {
-      star.style.visibility = 'hidden';
+    if (star.style.display !== 'none') {
+      star.style.display = 'none';
       break;
     }
   }
@@ -127,6 +131,7 @@ deck.addEventListener('click', event => {
       checkMatch();
       addMove();
       checkMoves();
+      gameOverCheck();
     }
   }
 });
@@ -158,7 +163,7 @@ function checkMatch() {
     flippedCards[0].classList.toggle('match');
     flippedCards[1].classList.toggle('match');
     flippedCards = [];
-    matched++;
+    matchedPairs++;
   } else {
     setTimeout(() => {
       flipCard(flippedCards[0]);
@@ -173,7 +178,6 @@ function toggleModal() {
   const modal = document.querySelector('.modal__bg');
   modal.classList.toggle('hide');
 }
-toggleModal();
 
 // Add stats to modal
 function addModalStats() {
@@ -188,16 +192,28 @@ function addModalStats() {
   movesStat.innerHTML = moves;
 }
 
-document.querySelector('.modal__close').addEventListener('click', resetGame);
+// Modal close button
+document.querySelector('.modal__close').addEventListener('click', replayGame);
 
-document.querySelector('.modal__button__replay').addEventListener('click', resetGame);
+// Modal replay button
+document.querySelector('.modal__button__replay').addEventListener('click', replayGame);
+
+// Restart button
+document.querySelector('.restart i').addEventListener ('click', resetGame);
 
 // Reset game
 function resetGame() {
   resetTimerAndTime();
   resetMoves();
   resetStars();
+  resetCards();
+  resetMatchedPairs();
   shuffleDeck();
+}
+
+// Replay game
+function replayGame () {
+  resetGame();
   toggleModal();
 }
 
@@ -218,8 +234,34 @@ function resetMoves() {
 // Reset stars
 function resetStars() {
   for (star of stars) {
-    if (star.style.visibility !== 'visible') {
-      star.style.visibility = 'visible';
+    if (star.style.display !== 'inline') {
+      star.style.display = 'inline';
     }
   }
+}
+
+// Reset cards
+function resetCards() {
+  const cards = document.querySelectorAll('.deck li');
+  for (card of cards) {
+    card.className = 'card';
+  }
+}
+
+// Reset matchedPairs
+function resetMatchedPairs() {
+  matchedPairs = 0;
+}
+
+// Game over
+function gameOverCheck() {
+  if (matchedPairs === totalPairs) {
+    gameOver();
+  }
+}
+
+function gameOver() {
+  stopTimer();
+  addModalStats();
+  toggleModal();
 }
